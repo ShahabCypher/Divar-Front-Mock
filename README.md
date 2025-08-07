@@ -4,7 +4,7 @@ A frontend implementation of Divar's user interface built with React and TanStac
 
 ## Features
 
-- User authentication (login/register)
+- User authentication
 - Post and manage classified ads
 - Browse classified ads and listings
 - Responsive design matching Divar's UI/UX
