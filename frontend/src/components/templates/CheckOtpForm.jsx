@@ -1,9 +1,17 @@
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 import { checkOtp } from "services/auth";
 import { setCookie } from "utils/cookie";
+import { getProfile } from "services/user";
 
 const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
+  const navigate = useNavigate();
+  const queryKey = ["profile"];
+  const queryFn = () => getProfile();
+  const { refetch } = useQuery({ queryKey, queryFn });
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -13,6 +21,8 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
 
     if (response) {
       setCookie(response.data);
+      navigate("/");
+      refetch();
     }
     if (error)
       toast.error(error.response.data.message, {

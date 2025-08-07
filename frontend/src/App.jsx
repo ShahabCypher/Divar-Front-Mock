@@ -6,7 +6,7 @@ import Router from "router/Router";
 import defaultOptions from "configs/ReactQuery";
 
 function App() {
-  const queryClient = new QueryClient({ defaultOptions });
+  const queryClient = new QueryClient(defaultOptions);
 
   return (
     <QueryClientProvider client={queryClient}>

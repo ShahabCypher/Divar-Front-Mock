@@ -11,7 +11,7 @@ import { getProfile } from "services/user";
 const Router = () => {
   const queryKey = ["profile"];
   const queryFn = () => getProfile();
-  const { data, isPending } = useQuery({ queryKey, queryFn });
+  const { data, isPending, error } = useQuery({ queryKey, queryFn });
 
   if (isPending) return <h1>Loading...</h1>;
 
