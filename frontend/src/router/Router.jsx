@@ -13,6 +13,8 @@ const Router = () => {
   const queryFn = () => getProfile();
   const { data, isPending } = useQuery({ queryKey, queryFn });
 
+  if (isPending) return <h1>Loading...</h1>;
+
   return (
     <Routes>
       <Route index element={<HomePage />} />
