@@ -6,6 +6,7 @@ import DashboardPage from "pages/DashboardPage";
 import AuthPage from "pages/AuthPage";
 import AdminPage from "pages/AdminPage";
 import NotFoundPage from "pages/NotFoundPage";
+import Loader from "src/components/modules/Loader";
 import { getProfile } from "services/user";
 
 const Router = () => {
@@ -13,7 +14,7 @@ const Router = () => {
   const queryFn = () => getProfile();
   const { data, isPending, error } = useQuery({ queryKey, queryFn });
 
-  if (isPending) return <h1>Loading...</h1>;
+  if (isPending) return <Loader />;
 
   return (
     <Routes>
