@@ -6,6 +6,8 @@ import { checkOtp } from "services/auth";
 import { setCookie } from "utils/cookie";
 import { getProfile } from "services/user";
 
+import styles from "./CheckOtpForm.module.css";
+
 const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
   const navigate = useNavigate();
   const queryKey = ["profile"];
@@ -31,7 +33,7 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <p>ورود به حساب کاربری</p>
       <span>کد پیامک‌شده به شمارۀ «{mobile}» را وارد کنید.</span>
       <label htmlFor="input">کد تأیید را وارد کنید</label>
@@ -43,7 +45,9 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
         onChange={(e) => setOtp(e.target.value)}
       />
       <button type="submit">ورود</button>
-      <button onClick={() => setStep(1)}>تغییر شماره موبایل</button>
+      <button onClick={() => setStep(1)} className={styles.backButton}>
+        تغییر شماره موبایل
+      </button>
       <ToastContainer />
     </form>
   );
