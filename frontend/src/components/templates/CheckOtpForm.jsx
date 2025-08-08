@@ -1,6 +1,6 @@
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { checkOtp } from "services/auth";
 import { setCookie } from "utils/cookie";
@@ -26,10 +26,7 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
       navigate("/");
       refetch();
     }
-    if (error)
-      toast.error(error.response.data.message, {
-        position: "top-center",
-      });
+    if (error) toast.error("مشکلی پیش آمده است");
   };
 
   return (
@@ -48,7 +45,6 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
       <button onClick={() => setStep(1)} className={styles.backButton}>
         تغییر شماره موبایل
       </button>
-      <ToastContainer />
     </form>
   );
 };

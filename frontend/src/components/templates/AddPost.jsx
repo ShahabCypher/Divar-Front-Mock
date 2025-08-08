@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import axios from "axios";
 
 import { getCategories } from "services/admin";
@@ -33,6 +34,15 @@ const AddPost = () => {
   const addHandler = (e) => {
     e.preventDefault();
 
+    if (
+      !form.title ||
+      !form.content ||
+      !form.amount ||
+      !form.city ||
+      !form.category
+    )
+      return;
+
     const formData = new FormData();
     for (let i in form) {
       formData.append(i, form[i]);
@@ -46,8 +56,8 @@ const AddPost = () => {
           Authorization: `bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => toast.success(res.data.message))
+      .catch(() => toast.error("مشکلی پیش آمده است"));
   };
 
   return (

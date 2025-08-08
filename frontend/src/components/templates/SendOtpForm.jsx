@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import { sendOtp } from "services/auth";
 
@@ -13,10 +13,7 @@ const SendOtpForm = ({ setStep, mobile, setMobile }) => {
     const { response, error } = await sendOtp(mobile);
 
     if (response) setStep(2);
-    if (error)
-      toast.error(error.response.data.message, {
-        position: "top-center",
-      });
+    if (error) toast.error("مشکلی پیش آمده است");
   };
 
   return (
@@ -35,7 +32,6 @@ const SendOtpForm = ({ setStep, mobile, setMobile }) => {
         onChange={(e) => setMobile(e.target.value)}
       />
       <button type="submit">ارسال کد تایید</button>
-      <ToastContainer />
     </form>
   );
 };
