@@ -8,14 +8,15 @@ import styles from "./CategoryList.module.css";
 
 const CategoryList = () => {
   const [disabledButtons, setDisabledButtons] = useState({});
-  const { data, isPending } = useQuery({
+  const { data, isPending, refetch } = useQuery({
     queryKey: ["get-categories"],
     queryFn: getCategories,
   });
 
-  const deleteHandler = (id) => {
+  const deleteHandler = async (id) => {
     setDisabledButtons((prev) => ({ ...prev, [id]: true }));
-    deleteCategory(id);
+    await deleteCategory(id);
+    refetch();
   };
 
   return (
