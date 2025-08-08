@@ -8,6 +8,7 @@
   padding: 15px;
   border: 2px solid #eaeaea;
   border-radius: 5px;
+  align-items: center;
 }
 
 .list h5 {
@@ -20,4 +21,18 @@
   width: 100%;
   text-align: left;
   color: #a62626;
+}
+
+.list button {
+  background-color: #a62626;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.list button:disabled {
+  opacity: 0.5;
 }
