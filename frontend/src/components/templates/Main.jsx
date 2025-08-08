@@ -1,4 +1,4 @@
-const Main = () => {
+const Main = ({ posts }) => {
   return <div>Main</div>;
 };
 
