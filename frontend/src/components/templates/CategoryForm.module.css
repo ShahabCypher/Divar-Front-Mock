@@ -20,6 +20,15 @@
   margin-bottom: 30px;
 }
 
+.form select {
+  display: block;
+  direction: ltr;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
 .form button {
   background-color: #a62626;
   color: #fff;

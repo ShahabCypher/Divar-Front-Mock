@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { addCategory } from "services/admin";
+import categoryIcons from "constants/categoryIcons";
 
 import styles from "./CategoryForm.module.css";
 
@@ -10,7 +11,7 @@ const CategoryForm = () => {
   const [form, setForm] = useState({
     name: "",
     slug: "",
-    icon: "",
+    icon: categoryIcons[0],
   });
 
   const { mutate, isPending, error, data } = useMutation({
@@ -45,7 +46,13 @@ const CategoryForm = () => {
       <label htmlFor="slug">اسلاگ</label>
       <input type="text" name="slug" id="slug" />
       <label htmlFor="icon">آیکون</label>
-      <input type="text" name="icon" id="icon" />
+      <select name="icon" id="icon">
+        {categoryIcons.map((icon) => (
+          <option key={icon} value={icon}>
+            {icon}
+          </option>
+        ))}
+      </select>
       <button type="submit" disabled={isPending}>
         ایجاد
       </button>
