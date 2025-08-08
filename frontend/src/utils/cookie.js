@@ -14,4 +14,9 @@ const getCookie = (name) => {
     ?.split("=")[1];
 };
 
-export { setCookie, getCookie };
+const clearCookie = () => {
+  document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+};
+
+export { setCookie, getCookie, clearCookie };

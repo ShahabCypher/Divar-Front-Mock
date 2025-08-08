@@ -21,11 +21,50 @@
   align-items: center;
   color: grey;
   height: 50px;
+  position: relative;
 }
 
 .header span p {
   margin-right: 5px;
   font-size: 0.9rem;
+}
+
+.header .dropbutton {
+  cursor: pointer;
+  user-select: none;
+}
+
+.header .dropdown {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.dropdown ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dropdown ul a {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown ul a:last-child {
+  border-bottom: none;
+}
+
+.dropdown ul a:hover {
+  background-color: #f0f0f0;
 }
 
 .button {
