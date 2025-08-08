@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+
+import { addCategory } from "services/admin";
 
 import styles from "./CategoryForm.module.css";
 
@@ -7,6 +10,10 @@ const CategoryForm = () => {
     name: "",
     slug: "",
     icon: "",
+  });
+
+  const { mutate, isPending, error, data } = useMutation({
+    mutationFn: addCategory,
   });
 
   const changeHandler = (e) => {
@@ -18,7 +25,8 @@ const CategoryForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(form);
+    if (!form.name || !form.slug || !form.icon) return;
+    mutate(form);
   };
 
   return (
@@ -28,13 +36,17 @@ const CategoryForm = () => {
       className={styles.form}
     >
       <h3>دسته بندی جدید</h3>
+      {!!error && <p>مشکلی در ایجاد دسته بندی رخ داده است</p>}
+      {data?.status === 201 && <p>دسته بندی با موفقیت ایجاد شد</p>}
       <label htmlFor="name">نام دسته بندی</label>
       <input type="name" name="name" id="name" />
       <label htmlFor="slug">اسلاگ</label>
       <input type="text" name="slug" id="slug" />
       <label htmlFor="icon">آیکون</label>
       <input type="text" name="icon" id="icon" />
-      <button type="submit">ایجاد</button>
+      <button type="submit" disabled={isPending}>
+        ایجاد
+      </button>
     </form>
   );
 };
