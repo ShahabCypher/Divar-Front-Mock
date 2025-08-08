@@ -24,7 +24,7 @@ const AddPost = () => {
 
   const changeHandler = (e) => {
     const name = e.target.name;
-    if (name === "image") {
+    if (name === "images") {
       setForm({ ...form, [name]: e.target.files[0] });
     } else {
       setForm({ ...form, [name]: e.target.value });

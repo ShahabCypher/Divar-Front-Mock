@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 
 import { sendOtp } from "services/auth";
+import { p2e } from "utils/numbers";
 
 import styles from "./SendOtpForm.module.css";
 
@@ -10,7 +11,7 @@ const SendOtpForm = ({ setStep, mobile, setMobile }) => {
 
     if (mobile.length !== 11) return;
 
-    const { response, error } = await sendOtp(mobile);
+    const { response, error } = await sendOtp(p2e(mobile));
 
     if (response) setStep(2);
     if (error) toast.error("مشکلی پیش آمده است");

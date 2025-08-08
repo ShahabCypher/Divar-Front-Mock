@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { checkOtp } from "services/auth";
 import { setCookie } from "utils/cookie";
 import { getProfile } from "services/user";
+import { p2e } from "utils/numbers";
 
 import styles from "./CheckOtpForm.module.css";
 
@@ -19,7 +20,7 @@ const CheckOtpForm = ({ otp, setOtp, mobile, setStep }) => {
 
     if (otp.length !== 5) return;
 
-    const { response, error } = await checkOtp(mobile, otp);
+    const { response, error } = await checkOtp(p2e(mobile), p2e(otp));
 
     if (response) {
       setCookie(response.data);
