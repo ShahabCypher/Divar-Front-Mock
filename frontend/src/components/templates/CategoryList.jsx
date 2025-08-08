@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../modules/Loader";
 import { getCategories } from "services/admin";
 
+import styles from "./CategoryList.module.css";
+
 const CategoryList = () => {
   const { data, isPending } = useQuery({
     queryKey: ["get-categories"],
@@ -10,7 +12,7 @@ const CategoryList = () => {
   });
 
   return (
-    <div>
+    <div className={styles.list}>
       {isPending ? (
         <Loader />
       ) : (
