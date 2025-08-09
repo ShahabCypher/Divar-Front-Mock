@@ -3,13 +3,19 @@
   width: 200px;
 }
 
-.sidebar li {
+.sidebar a {
   display: flex;
   margin: 20px 0;
+  user-select: none;
 }
 
-.sidebar li p {
+.sidebar a p {
   font-weight: 200;
   margin-right: 10px;
   color: grey;
+}
+
+.sidebar .active p {
+  color: #000;
+  font-weight: 400;
 }

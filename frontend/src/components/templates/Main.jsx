@@ -2,12 +2,16 @@ import { sp } from "src/utils/numbers";
 
 import styles from "./Main.module.css";
 
-const Main = ({ posts }) => {
+const Main = ({ posts, category: { id: categoryId } }) => {
   const URL = import.meta.env.VITE_BACKEND_URL;
+
+  const data = categoryId
+    ? posts.data.posts.filter((post) => post.category === categoryId)
+    : posts.data.posts;
 
   return (
     <div className={styles.container}>
-      {posts.data.posts.map((post) => (
+      {data.map((post) => (
         <div key={post._id} className={styles.card}>
           <div className={styles.info}>
             <p>{post.options.title}</p>

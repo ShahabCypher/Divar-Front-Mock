@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Main from "components/templates/Main";
@@ -18,14 +19,20 @@ const HomePage = () => {
     queryFn: getCategories,
   });
 
+  const [category, setCategory] = useState({});
+
   return (
     <>
       {postsPending || categoriesPending ? (
         <Loader />
       ) : (
         <div style={style}>
-          <SideBar categories={categories} />
-          <Main posts={posts} />
+          <SideBar
+            categories={categories}
+            current={category}
+            setCategory={setCategory}
+          />
+          <Main posts={posts} category={category} />
         </div>
       )}
     </>
